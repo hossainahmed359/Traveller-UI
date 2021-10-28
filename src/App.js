@@ -19,7 +19,7 @@ function App() {
           <Route exact path="/"><Home></Home></Route>
           <Route path="/home"><Home></Home></Route>
           <Route path="/login"><Login></Login></Route>
-          <Route path="/placeOrder"><PlaceOrder></PlaceOrder></Route>
+          <Route path="/placeOrder/:id"><PlaceOrder></PlaceOrder></Route>
           <Route path="/myOrders"><MyOrders></MyOrders></Route>
           <Route path="/admin"><Admin></Admin></Route>
           <Route path="*"><NotFound></NotFound></Route>

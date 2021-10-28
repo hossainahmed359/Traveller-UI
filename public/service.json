@@ -1,0 +1,50 @@
+[
+    {
+        "price": "$2,210",
+        "picture": "https://i.ibb.co/spTLK6T/asia.jpg",
+        "place": "Asia",
+        "about": "Asia is the largest continent by both size and population-a diverse, multicultural melting pot of some of the oldest civilizations on earth. There's so much to see and do in Asia, it's hard to narrow it down to a shortlist-it could take you months to truly explore just one country.",
+        "latitude": -11.479831,
+        "longitude": 85.054913
+    },
+    {
+        "price": "$2,228",
+        "picture": "https://i.ibb.co/mN7h2Vs/europe.jpg",
+        "place": "Europe",
+        "about": "Paris has it all, which is why it’s as close to a must-see as there is in Europe. Food, history, art, culture, and beauty around every corner. A highlight for me is doing a bike tour around the city.",
+        "latitude": 44.252261,
+        "longitude": 112.963175
+    },
+    {
+        "price": "$1,891",
+        "picture": "https://i.ibb.co/ZB9K281/italy.jpg",
+        "place": "Italy",
+        "about": "Italy is one of the most popular vacation destinations in the world, and it's no wonder. However, not every Italian getaway needs to be in the hub of Florence or along the Amalfi Coast. Here, we take a look at some of the most beautiful—and under the radar—places in Italy to book your next vacation to.",
+        "latitude": -65.999243,
+        "longitude": -139.724953
+    },
+    {
+        "price": "$1,172",
+        "picture": "https://i.ibb.co/gr3KdC5/thailand.jpg",
+        "place": "Thailand",
+        "about": "The 'Land of Smiles' is one of the jewels of Southeast Asia. Thanks to a thriving tourism industry, Thailand is well-developed and provides all kinds of modern comforts – yet it's also still wild enough to offer off-the-beaten-path adventure and once-in-a-lifetime travel experiences. ",
+        "latitude": 64.455201,
+        "longitude": 101.112728
+    },
+    {
+        "price": "$1,661",
+        "picture": "https://i.ibb.co/St2fPHw/united-states.jpg",
+        "place": "United States",
+        "about": "With so much to see in this vast country, it can be difficult to know where to start when it comes to planning a trip in the United States. World-class cities, some known for history and others known for fun or glamour, give visitors a broad spectrum of places to choose from.",
+        "latitude": 14.628063,
+        "longitude": 30.569605
+    },
+    {
+        "price": "$1,868",
+        "picture": "https://i.ibb.co/hFDKx1T/nehterlands.jpg",
+        "place": "Netherlands",
+        "about": "The Netherlands is known everywhere as a land of windmills, canals, and tulips, and today's visitors certainly will find these among its many tourist attractions. But along with the country's many breathtaking gardens and picturesque villages.",
+        "latitude": -38.736383,
+        "longitude": 130.124474
+    }
+]

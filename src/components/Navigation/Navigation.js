@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Navigation = () => {
     return (
         <div>
-            <Navbar collapseOnSelect expand="lg" bg="info" variant="light" className="border-bottom shadow">
+            <Navbar collapseOnSelect expand="lg" bg="info" variant="light" className=" shadow">
                 <Container fluid className="py-2">
                     <Nav.Link as={Link} to="/home">Traveller</Nav.Link>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
