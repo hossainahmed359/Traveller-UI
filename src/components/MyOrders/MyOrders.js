@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Container } from 'react-bootstrap';
+import { Button, Container, Row } from 'react-bootstrap';
 import Orders from './Orders/Orders';
 
 const MyOrders = () => {
@@ -15,7 +15,7 @@ const MyOrders = () => {
     const [existingUserInfo, setExistingUserInfo] = useState([]);
 
 
-    // Fetch Data
+    // Fetch Data via user email
     useEffect(() => {
         // ************* Change the email when needed *************
         fetch(`http://localhost:5000/finduser/${userEmail}`)
@@ -37,10 +37,13 @@ const MyOrders = () => {
             </Button>
             {/* <button onClick={() => { setClicked(true) }}>Force Load User Info</button> */}
             <Container>
-                {existingUserInfo.map(orders => <Orders
-                    key={orders._id}
-                    orders={orders}
-                ></Orders>)}
+                <Row xs={1} md={2} lg={3} className="g-5">
+                    {existingUserInfo.map(orders =>
+                        <Orders
+                            key={orders._id}
+                            orders={orders}
+                        ></Orders>)}
+                </Row>
             </Container>
         </div>
     );
