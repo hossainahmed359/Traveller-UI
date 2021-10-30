@@ -21,6 +21,7 @@ const PlaceOrder = () => {
 
     // Store Single Service 
     const [service, setService] = useState({});
+    //
     const { _id, price, picture, place, about } = service;
 
 
@@ -32,17 +33,27 @@ const PlaceOrder = () => {
     }, []);
 
 
-    // *********** Booking Section Section ***********
+    // *********** Booking Section ***********
+
 
     // Form
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
-        const { email, name, number, date, location } = data;
-        const desitinations = [{ id: _id, status: "pending", date: date }];
-        const user = { email, name, number, location, desitinations };
 
-        // Set New User
-        axios.post('http://localhost:5000/user', {
+        // Destructuring Data
+        const { email, name, number, date, location } = data;
+
+
+        // Setting Destination
+        const destination = { id: _id, status: 'pending' };
+
+
+        // Setting User information
+        const user = { email, name, number, location, date, destination };
+
+
+        // Place Order
+        axios.post('http://localhost:5000/placeOrder', {
             user
         })
             .then((res) => {
@@ -53,8 +64,11 @@ const PlaceOrder = () => {
             .catch((error) => {
                 console.log(error);
             });
+
         reset();
+
     };
+
 
     return (
         <div className="my-4">
@@ -84,7 +98,7 @@ const PlaceOrder = () => {
                             <input {...register("name", { required: true, maxLength: 30 })} className="my-3 py-2 w-100" placeholder="Name" />
                             <input {...register("number", { required: true })} className="my-3 py-2 w-100" placeholder="Phone Number" />
                             <input {...register("date",)} className="my-3 py-2 w-100" placeholder="Set Date" />
-                            <input {...register("location", { required: true, maxLength: 20 })} className="my-3 py-2 w-100" placeholder="Your Loaction" />
+                            <input {...register("location", { required: true, maxLength: 20 })} className="my-3 py-2 w-100" placeholder="Your address" />
                             <h3 className="text-muted border-bottom pb-2">{place}</h3>
                             <Button type="submit" variant="outline-success" className="w-100 py-2  rounded">Submit</Button>
                         </form>
