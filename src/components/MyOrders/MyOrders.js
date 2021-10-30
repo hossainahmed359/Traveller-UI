@@ -43,7 +43,6 @@ const MyOrders = () => {
             <Button variant="outline-info" size="lg" className="rounded-pill shadow my-5" disabled>
                 My Orders
             </Button>
-            {/* <button onClick={() => { setClicked(true) }}>Force Load User Info</button> */}
             <Container>
                 <Row xs={1} md={2} lg={3} className="g-5">
                     {existingUserInfo.map(orders =>

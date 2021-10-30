@@ -24,8 +24,8 @@ const Orders = (props) => {
 
     const handleDelete = () => {
 
-        window.confirm("Are you sure you want to cancel ?");
-        if (window.confirm) {
+        const proceed = window.confirm("Are you sure you want to cancel ?");
+        if (proceed) {
             console.log('confirmed')
             fetch(`http://localhost:5000/deleteOrder/${_id}`, {
                 method: 'Delete'
@@ -65,7 +65,13 @@ const Orders = (props) => {
                             </Card.Text>
                             <p className="">
                                 Date:  {singleDestinationDeatils.date}</p>
-                            <p className="">
+                            <p className={
+                                singleDestinationDeatils.destination?.status === 'Approved'
+                                    ?
+                                    "text-success"
+                                    :
+                                    "text-warning"
+                            }>
                                 Status: {singleDestinationDeatils.destination?.status}
                             </p>
                         </div>
