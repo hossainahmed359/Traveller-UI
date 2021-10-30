@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Button, Card, Col } from 'react-bootstrap';
 
 const Orders = (props) => {
-    const { _id, date, destination } = props.orders;
+    const { _id, date, destination, } = props.orders;
+    const handleItemDeleteFromUI = props.handleItemDeleteFromUI;
 
     // Store Destination Details
     const [singleDestinationDeatils, setSingleDestinatioDetails] = useState({});
@@ -12,7 +13,12 @@ const Orders = (props) => {
         fetch(`http://localhost:5000/services/${destination.id}`)
             .then(res => res.json())
             .then(data => {
-                setSingleDestinatioDetails(data);
+                // Push The props in data
+                data.date = date;
+                data.destination = destination;
+                setSingleDestinatioDetails(data)
+
+
             })
     }, []);
 
@@ -27,9 +33,12 @@ const Orders = (props) => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.deletedCount > 0) {
+                        console.log(data)
                         console.log('Deleted')
+
                     }
                 })
+            handleItemDeleteFromUI(_id)
         }
         else {
             //some code
@@ -55,9 +64,9 @@ const Orders = (props) => {
 
                             </Card.Text>
                             <p className="">
-                                Date:  {date}</p>
+                                Date:  {singleDestinationDeatils.date}</p>
                             <p className="">
-                                Status: {destination.status}
+                                Status: {singleDestinationDeatils.destination?.status}
                             </p>
                         </div>
                         <Button onClick={handleDelete} className="text-end" variant="outline-danger">Cancel Trip</Button>

@@ -26,8 +26,16 @@ const MyOrders = () => {
 
     }, []);
 
-
-
+    // Handle Delete On User cancel request
+    const handleItemDeleteFromUI = _id => {
+        const remainingOrders = []
+        existingUserInfo.filter(orders => {
+            if (orders._id !== _id) {
+                remainingOrders.push(orders)
+            }
+            setExistingUserInfo(remainingOrders);
+        })
+    }
 
 
     return (
@@ -42,6 +50,7 @@ const MyOrders = () => {
                         <Orders
                             key={orders._id}
                             orders={orders}
+                            handleItemDeleteFromUI={handleItemDeleteFromUI}
                         ></Orders>)}
                 </Row>
             </Container>
