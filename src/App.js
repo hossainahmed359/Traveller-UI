@@ -10,6 +10,7 @@ import MyOrders from './components/MyOrders/MyOrders';
 import Navigation from './components/Navigation/Navigation';
 import NotFound from './components/NotFound/NotFound';
 import PlaceOrder from './components/PlaceOrder/PlaceOrder';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import AuthProvider from './contexts/AuthProvider';
 
 function App() {
@@ -22,10 +23,10 @@ function App() {
             <Route exact path="/"><Home></Home></Route>
             <Route path="/home"><Home></Home></Route>
             <Route path="/login"><Login></Login></Route>
-            <Route path="/placeOrder/:id"><PlaceOrder></PlaceOrder></Route>
-            <Route path="/myOrders"><MyOrders></MyOrders></Route>
-            <Route path="/manageAllOrders"><ManageAllOrders></ManageAllOrders></Route>
-            <Route path="/addNewService"><AddNewService></AddNewService></Route>
+            <PrivateRoute path="/placeOrder/:id"><PlaceOrder></PlaceOrder></PrivateRoute>
+            <PrivateRoute path="/myOrders"><MyOrders></MyOrders></PrivateRoute>
+            <PrivateRoute path="/manageAllOrders"><ManageAllOrders></ManageAllOrders></PrivateRoute>
+            <PrivateRoute path="/addNewService"><AddNewService></AddNewService></PrivateRoute>
             <Route path="*"><NotFound></NotFound></Route>
           </Switch>
         </Router>

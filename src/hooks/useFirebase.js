@@ -24,48 +24,20 @@ const useFirebase = () => {
 
     // Google Sign In
     const handleGoogleSignIn = () => {
-        signInWithPopup(auth, googleProvider)
-            .then((result) => {
-                const credential = GoogleAuthProvider.credentialFromResult(result);
-                const token = credential.accessToken;
-                const user = result.user;
-                // ...
-            }).catch((error) => {
-                // Handle Errors here.
-                setError(error.message)
-            });
+        return signInWithPopup(auth, googleProvider)
 
     };
 
 
     // Registration with email and password
     const handleEmailRegistraion = (email, password) => {
-        createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                // Signed in 
-                const user = userCredential.user;
-                // ...
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                setError(error.message)
-                // ..
-            });
+        return createUserWithEmailAndPassword(auth, email, password)
     };
 
 
     // Sign In with Email and Password
     const handleEmailSignIn = (email, password) => {
-        signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                // Signed in 
-                const user = userCredential.user;
-                // ...
-            })
-            .catch((error) => {
-
-                setError(error.message)
-            });
+        return signInWithEmailAndPassword(auth, email, password)
     }
 
 

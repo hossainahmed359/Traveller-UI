@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Controller, useForm } from "react-hook-form";
 import { Button, Container, Form, Row } from 'react-bootstrap';
 import useAuth from '../../hooks/useAuth';
+import { useHistory, useLocation } from 'react-router';
 
 const Login = () => {
     const {
@@ -11,8 +12,12 @@ const Login = () => {
         setError,
         handleGoogleSignIn,
         handleEmailRegistraion,
-        handleEmailSignIn,
-        handleSignOut } = useAuth();
+        handleEmailSignIn } = useAuth();
+
+    // Redirect
+    const location = useLocation();
+    const history = useHistory();
+    const redirect_uri = location.state?.from || './'
 
     // ToggleLogIn 
     const [exists, setExists] = useState(false)
@@ -23,6 +28,15 @@ const Login = () => {
     // Handle Google SignIn
     const continueWithGoogle = () => {
         handleGoogleSignIn()
+            .then((result) => {
+                history.push(redirect_uri)
+                // const user = result.user;
+                setError('')
+                // ...
+            }).catch((error) => {
+                // Handle Errors here.
+                setError(error.message)
+            });
     }
 
 
@@ -32,16 +46,33 @@ const Login = () => {
     const onSubmit = data => {
 
         exists ?
-            handleEmailSignIn(data.email, data.password)
+            (handleEmailSignIn(data.email, data.password)
+                .then((result) => {
+                    history.push(redirect_uri)
+                    // const user = result.user;
+                })
+                .catch((error) => {
+
+                    setError(error.message)
+                })
+            )
             :
-            handleEmailRegistraion(data.email, data.password)
+            (handleEmailRegistraion(data.email, data.password)
+                .then((result) => {
+                    history.push(redirect_uri)
+                    // const user = user.result
+                })
+                .catch((error) => {
+                    setError(error.message)
+                })
+            )
 
         setError('');
         reset();
-        console.log(data)
     };
 
 
+    //
     return (
         <div className=" mx-auto">
             <Row sm={1} md={2} lg={4} className="mx-auto">
