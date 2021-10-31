@@ -10,24 +10,27 @@ import MyOrders from './components/MyOrders/MyOrders';
 import Navigation from './components/Navigation/Navigation';
 import NotFound from './components/NotFound/NotFound';
 import PlaceOrder from './components/PlaceOrder/PlaceOrder';
+import AuthProvider from './contexts/AuthProvider';
 
 function App() {
   return (
     <div className="App">
-      <Router>
-        <Navigation></Navigation>
-        <Switch>
-          <Route exact path="/"><Home></Home></Route>
-          <Route path="/home"><Home></Home></Route>
-          <Route path="/login"><Login></Login></Route>
-          <Route path="/placeOrder/:id"><PlaceOrder></PlaceOrder></Route>
-          <Route path="/myOrders"><MyOrders></MyOrders></Route>
-          <Route path="/manageAllOrders"><ManageAllOrders></ManageAllOrders></Route>
-          <Route path="/addNewService"><AddNewService></AddNewService></Route>
-          <Route path="*"><NotFound></NotFound></Route>
-        </Switch>
-      </Router>
-      {/* <Footer></Footer> */}
+      <AuthProvider>
+        <Router>
+          <Navigation></Navigation>
+          <Switch>
+            <Route exact path="/"><Home></Home></Route>
+            <Route path="/home"><Home></Home></Route>
+            <Route path="/login"><Login></Login></Route>
+            <Route path="/placeOrder/:id"><PlaceOrder></PlaceOrder></Route>
+            <Route path="/myOrders"><MyOrders></MyOrders></Route>
+            <Route path="/manageAllOrders"><ManageAllOrders></ManageAllOrders></Route>
+            <Route path="/addNewService"><AddNewService></AddNewService></Route>
+            <Route path="*"><NotFound></NotFound></Route>
+          </Switch>
+        </Router>
+        {/* <Footer></Footer> */}
+      </AuthProvider>
     </div>
   );
 }
