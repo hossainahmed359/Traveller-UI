@@ -2,8 +2,10 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <div>
-            <h1>This is Footer</h1>
+        <div className="bg-info mt-5">
+            <p className="py-3 mb-0">
+                © Copyright 2021 HTML.am
+            </p>
         </div>
     );
 };

@@ -21,7 +21,7 @@ const Destinations = () => {
                     Destinations
                 </Button>
                 <div>
-                    <Row xs={1} md={2} lg={3} className="g-4">
+                    <Row xs={1} md={2} lg={3} className="g-5">
                         {services.map(singleService => <SingleDestination
                             key={singleService._id}
                             singleService={singleService}

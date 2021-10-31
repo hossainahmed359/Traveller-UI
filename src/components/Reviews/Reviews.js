@@ -5,17 +5,17 @@ import { Container, Button, Carousel, Col } from 'react-bootstrap';
 const Reviews = () => {
     return (
         <div>
-            <Container className="mb-5 shadow">
+            <Container className="mb-5 ">
                 <Button variant="outline-success" size="lg" className="rounded-pill shadow my-5" disabled>
                     Best Travel Locations
                 </Button>
-                <div className="d-lg-flex" >
+                <div className="d-lg-flex align-items-center shadow px-2" >
                     <Col className="my-5">
                         <Carousel variant="dark" fade>
                             <Carousel.Item>
                                 <img
 
-                                    className="d-block w-100 "
+                                    className="d-block w-100"
                                     src="https://i.ibb.co/kMx3BM7/New-Project.jpg"
                                     alt="First slide"
                                 />
@@ -42,7 +42,7 @@ const Reviews = () => {
                             <Button variant="outline-warning" size="lg" className="rounded-pill shadow mb-4" disabled>
                                 Discover The World
                             </Button>
-                            <h1 className="mb-4 text-info">Travel</h1>
+
                             <p style={{ textAlign: 'justify' }} className="text-secondary px-3">
                                 Many first-time visitors to Japan are often surprised to learn that, as one of the world's most advanced industrialized nations, this relatively small Asian country also boasts a rich and fascinating history that dates back thousands of years..
                             </p>
