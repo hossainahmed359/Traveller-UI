@@ -2,16 +2,21 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { Button, Container, Row } from 'react-bootstrap';
+import useAuth from '../../hooks/useAuth';
 import SingleDestination from './SingleDestination/SingleDestination';
 
 const Destinations = () => {
+    const { setIsLoading } = useAuth();
     // Setting Data
     const [services, setServices] = useState([]);
     // Loading Data
     useEffect(() => {
         fetch('https://scary-mansion-91853.herokuapp.com/services')
             .then(res => res.json())
-            .then(data => setServices(data))
+            .then(data => {
+                setServices(data)
+                setIsLoading(false)
+            })
     }, [])
 
     return (
