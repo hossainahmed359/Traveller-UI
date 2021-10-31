@@ -9,6 +9,7 @@ initializeAuthentication();
 const useFirebase = () => {
 
     // States
+    const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState('');
     const [user, setUser] = useState({});
     const [userName, setUserName] = useState(null);
@@ -42,12 +43,15 @@ const useFirebase = () => {
 
 
     // Sign Out
-    const handleSignOut = () => {
-        signOut(auth).then(() => {
-            // Sign-out successful.
-        }).catch((error) => {
-            setError(error.message)
-        });
+    const logOut = () => {
+        signOut(auth)
+            .then(() => {
+                setUser({})
+                setUserName(null)
+                // Sign-out successful.
+            }).catch((error) => {
+                setError(error.message)
+            });
     }
 
     // Observer
@@ -55,23 +59,30 @@ const useFirebase = () => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUser(user)
+                setUserName(user.displayName)
                 // ...
             } else {
                 // User is signed out
                 // ...
             }
+            setIsLoading(false);
         });
     }, []);
 
+
+    // Return
     return {
         user,
+        userName,
+        isLoading,
+        setIsLoading,
         setUser,
         error,
         setError,
         handleGoogleSignIn,
         handleEmailRegistraion,
         handleEmailSignIn,
-        handleSignOut
+        logOut
     }
 }
 

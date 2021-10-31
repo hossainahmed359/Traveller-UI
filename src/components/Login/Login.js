@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { Button, Container, Form, Row } from 'react-bootstrap';
 import useAuth from '../../hooks/useAuth';
 import { useHistory, useLocation } from 'react-router';
 
 const Login = () => {
     const {
-        user,
-        setUser,
+        setIsLoading,
         error,
         setError,
         handleGoogleSignIn,
         handleEmailRegistraion,
-        handleEmailSignIn } = useAuth();
+        handleEmailSignIn
+    } = useAuth();
 
     // Redirect
     const location = useLocation();
@@ -36,7 +36,8 @@ const Login = () => {
             }).catch((error) => {
                 // Handle Errors here.
                 setError(error.message)
-            });
+            })
+            .finally(setIsLoading(false))
     }
 
 
@@ -52,9 +53,9 @@ const Login = () => {
                     // const user = result.user;
                 })
                 .catch((error) => {
-
                     setError(error.message)
                 })
+                .finally(setIsLoading(false))
             )
             :
             (handleEmailRegistraion(data.email, data.password)
@@ -65,6 +66,7 @@ const Login = () => {
                 .catch((error) => {
                     setError(error.message)
                 })
+                .finally(setIsLoading(false))
             )
 
         setError('');
