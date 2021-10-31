@@ -79,8 +79,11 @@ const Login = () => {
         <div className=" mx-auto">
             <Row sm={1} md={2} lg={4} className="mx-auto">
                 <Container className="my-5 ">
-                    <Button variant="outline-primary" disabled className="my-3 py-2 px-5 rounded-pill">{exists ? "Login" : "Register"}</Button>
-                    <br />
+                    {exists ?
+                        <Button variant="outline-success" disabled className="my-3 py-2 px-5 rounded-pill">Login</Button>
+                        :
+                        <Button variant="outline-danger" disabled className="my-3 py-2 px-5 rounded-pill">Register</Button>
+                    }
                     <Button onClick={continueWithGoogle} variant="success" size="lg w-100" className=" my-3">
                         Continue with Google
                     </Button>

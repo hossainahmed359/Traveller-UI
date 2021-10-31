@@ -6,6 +6,7 @@ import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
+import useAuth from '../../hooks/useAuth';
 const axios = require('axios').default;
 
 
@@ -34,6 +35,14 @@ const PlaceOrder = () => {
 
 
     // *********** Booking Section ***********
+    const { user } = useAuth();
+
+
+    // Getting Data From Firebase
+
+    //
+
+
 
 
     // Form
@@ -94,10 +103,10 @@ const PlaceOrder = () => {
                     <Col sm={12} md={4} lg={4} className="border border-info rounded shadow">
                         <h2 className="text-info my-3">Get Booking</h2>
                         <form onSubmit={handleSubmit(onSubmit)} className="px-2">
-                            <input {...register("email", { required: true })} className="my-3 py-2 w-100" placeholder="Email" />
-                            <input {...register("name", { required: true, maxLength: 30 })} className="my-3 py-2 w-100" placeholder="Name" />
-                            <input {...register("number", { required: true })} className="my-3 py-2 w-100" placeholder="Phone Number" />
-                            <input {...register("date",)} className="my-3 py-2 w-100" placeholder="Set Date" />
+                            <input  {...register("email", { required: true })} value={user.email} readOnly className="my-3 text-muted  py-2 w-100" placeholder="Email" />
+                            <input  {...register("name", { required: true, maxLength: 30 })} className="my-3 py-2 w-100" placeholder="Name" />
+                            <input type="number" {...register("number", { required: true })} className="my-3 py-2 w-100" placeholder="Phone Number" />
+                            <input   {...register("date",)} className="my-3 py-2 w-100" placeholder="Set Date: dd/mm/yyyy " />
                             <input {...register("location", { required: true, maxLength: 20 })} className="my-3 py-2 w-100" placeholder="Your address" />
                             <h3 className="text-muted border-bottom pb-2">{place}</h3>
                             <Button type="submit" variant="outline-success" className="w-100 py-2  rounded">Submit</Button>
@@ -105,7 +114,7 @@ const PlaceOrder = () => {
                     </Col>
                 </Row>
             </Container>
-            <h2>{id}</h2>
+            <br />
         </div >
     );
 };

@@ -13,6 +13,7 @@ const useFirebase = () => {
     const [error, setError] = useState('');
     const [user, setUser] = useState({});
     const [userName, setUserName] = useState(null);
+    const [userEmail, setUserEmail] = useState(null)
 
 
     // Auth
@@ -59,6 +60,7 @@ const useFirebase = () => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUser(user)
+                setUserEmail(user.email)
                 setUserName(user.displayName)
                 // ...
             } else {
@@ -74,6 +76,7 @@ const useFirebase = () => {
     return {
         user,
         userName,
+        userEmail,
         isLoading,
         setIsLoading,
         setUser,
