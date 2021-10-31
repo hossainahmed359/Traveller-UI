@@ -13,7 +13,7 @@ const ManageAllOrders = () => {
 
     // Fetch All Orders
     useEffect(() => {
-        fetch('http://localhost:5000/allOrders')
+        fetch('https://scary-mansion-91853.herokuapp.com/allOrders')
             .then(res => res.json())
             .then(data => setOrderRequests(data))
     }, []);
@@ -28,14 +28,14 @@ const ManageAllOrders = () => {
 
         const oldRequests = [...allOrderRequests];
         oldRequests.find(order => order._id === _id &&
-            axios.post(`http://localhost:5000/updateuser/${order._id}`, {
+            axios.post(`https://scary-mansion-91853.herokuapp.com/updateuser/${order._id}`, {
                 order
             })
                 .then(res => {
                     console.log(res)
                     if (res.data.modifiedCount > 0) {
                         alert('Approved Successfully !');
-                        fetch('http://localhost:5000/allOrders')
+                        fetch('https://scary-mansion-91853.herokuapp.com/allOrders')
                             .then(res => res.json())
                             .then(data => setOrderRequests(data))
 
@@ -49,7 +49,7 @@ const ManageAllOrders = () => {
     const handleDelete = _id => {
         const proceed = window.confirm('Are You Sure You want to Delete ?')
         if (proceed) {
-            fetch(`http://localhost:5000/deleteOrder/${_id}`, {
+            fetch(`https://scary-mansion-91853.herokuapp.com/deleteOrder/${_id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

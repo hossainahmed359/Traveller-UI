@@ -18,14 +18,12 @@ const Navigation = () => {
                             <Nav.Link as={Link} to="/myOrders">My Orders</Nav.Link>
                             <Nav.Link as={Link} to="/manageAllOrders">Manage All Orders</Nav.Link>
                             <Nav.Link as={Link} to="/addNewService">Add New Service</Nav.Link>
-                            <Nav.Link as={Link} to="/login">
-                                {!user?.email ?
-                                    <Link to="/login">Log In</Link>
-                                    :
-                                    <Button onClick={logOut} variant="light">
-                                        Log Out
-                                    </Button>}
-                            </Nav.Link>
+                            {!user?.email ?
+                                <Nav.Link as={Link} to="/login">Login </Nav.Link>
+                                :
+                                <Button onClick={logOut} variant="light">
+                                    Log Out
+                                </Button>}
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

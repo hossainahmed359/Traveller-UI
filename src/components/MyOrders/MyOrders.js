@@ -18,7 +18,7 @@ const MyOrders = () => {
     // Fetch Data via user email
     useEffect(() => {
         // ************* Change the email when needed *************
-        fetch(`http://localhost:5000/finduser/${userEmail}`)
+        fetch(`https://scary-mansion-91853.herokuapp.com/finduser/${userEmail}`)
             .then(res => res.json())
             .then(data => {
                 setExistingUserInfo(data)

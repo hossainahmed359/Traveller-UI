@@ -10,7 +10,7 @@ const Orders = (props) => {
 
     // Load Service
     useState(() => {
-        fetch(`http://localhost:5000/services/${destination.id}`)
+        fetch(`https://scary-mansion-91853.herokuapp.com/services/${destination.id}`)
             .then(res => res.json())
             .then(data => {
                 // Push The props in data
@@ -27,7 +27,7 @@ const Orders = (props) => {
         const proceed = window.confirm("Are you sure you want to cancel ?");
         if (proceed) {
             console.log('confirmed')
-            fetch(`http://localhost:5000/deleteOrder/${_id}`, {
+            fetch(`https://scary-mansion-91853.herokuapp.com/deleteOrder/${_id}`, {
                 method: 'Delete'
             })
                 .then(res => res.json())

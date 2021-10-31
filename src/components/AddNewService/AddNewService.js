@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React from 'react';
-import { Button, Container } from 'react-bootstrap';
+import { Button, Container, Row } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
 
 const AddNewService = () => {
@@ -8,7 +8,7 @@ const AddNewService = () => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
         console.log(data)
-        axios.post('http://localhost:5000/addService', {
+        axios.post('https://scary-mansion-91853.herokuapp.com/addService', {
             data
         })
             .then(res => {
@@ -21,28 +21,29 @@ const AddNewService = () => {
             <Button variant="outline-success" size="lg" className="rounded-pill shadow my-5" disabled>
                 Add A New Service
             </Button>
-            <Container className="col-lg-6 col-md-8 col-lg-12 border border-success rounded shadow px-4">
-                <form onSubmit={handleSubmit(onSubmit)}>
+            <Container >
+                <Row sm={3} md={2} lg={2} className="  px-4">
+                    <form onSubmit={handleSubmit(onSubmit)} className="mx-auto my-5  border border-success rounded shadow">
+                        <input {...register("picture", { required: true })} placeholder="Image url" className="w-100 my-3 py-2"
+                        />
+                        <br />
+                        <input {...register("place", { required: true })} placeholder="Place Name" className="w-100 my-3 py-2"
+                        />
+                        <br />
+                        <input {...register("price", { required: true })}
+                            placeholder="price" className="w-100 my-3 py-2"
+                        />
+                        <br />
 
-                    <input {...register("picture", { required: true })} placeholder="Image url" className="w-100 my-3 py-2"
-                    />
-                    <br />
-                    <input {...register("place", { required: true })} placeholder="Place Name" className="w-100 my-3 py-2"
-                    />
-                    <br />
-                    <input {...register("price", { required: true })}
-                        placeholder="price" className="w-100 my-3 py-2"
-                    />
-                    <br />
+                        <textarea {...register("about", { required: true })}
+                            rows="10" className="w-100 my-3" placeholder="Description"
+                        ></textarea>
 
-                    <textarea {...register("about", { required: true })}
-                        rows="10" className="w-100 my-3" placeholder="Description"
-                    ></textarea>
-
+                        <br />
+                        <Button variant="success" size="lg" className="w-100 rounded mb-4" type="submit">Submit</Button>
+                    </form>
                     <br />
-                    <Button variant="success" size="lg" className="w-100 rounded" type="submit">Submit</Button>
-                </form>
-                <br />
+                </Row>
             </Container>
             <br />
 

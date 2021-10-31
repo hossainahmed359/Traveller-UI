@@ -27,7 +27,7 @@ const PlaceOrder = () => {
 
     // Load Single Service
     useEffect(() => {
-        fetch(`http://localhost:5000/services/${id}`)
+        fetch(`https://scary-mansion-91853.herokuapp.com/services/${id}`)
             .then(res => res.json())
             .then(data => setService(data))
     }, []);
@@ -53,7 +53,7 @@ const PlaceOrder = () => {
 
 
         // Place Order
-        axios.post('http://localhost:5000/placeOrder', {
+        axios.post('https://scary-mansion-91853.herokuapp.com/placeOrder', {
             user
         })
             .then((res) => {
