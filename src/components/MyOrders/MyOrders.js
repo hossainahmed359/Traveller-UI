@@ -10,6 +10,7 @@ const MyOrders = () => {
     // Getting User Info
     const { user } = useAuth();
     const userEmail = user.email;
+    const userName = user.displayName;
     // const userName = user.displayName;
 
     // fontAwesome
@@ -50,8 +51,10 @@ const MyOrders = () => {
             <Button variant="outline-info" size="lg" className="rounded-pill shadow my-5" disabled>
                 My Orders
             </Button>
+            <h1 className="mb-5 text-success">{userName}</h1>
 
             <Container>
+
                 {existingUserInfo.length === 0 ?
                     <h2 className="text-muted">No Orders Available !</h2>
                     :
